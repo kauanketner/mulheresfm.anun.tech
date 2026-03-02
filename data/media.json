@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "outlet": "Gazeta do Povo",
+    "title": "Grupo de Mulheres em Facilities cresce e conquista espaço no mercado corporativo",
+    "date": "2024-03-10",
+    "url": "#",
+    "type": "magazine",
+    "outletLogo": "",
+    "image": ""
+  },
+  {
+    "id": "2",
+    "outlet": "Podcast FMBrasil",
+    "title": "Ep. 47 — Redes Femininas em FM: Como o coletivo acelera carreiras",
+    "date": "2024-02-15",
+    "url": "#",
+    "type": "podcast",
+    "outletLogo": "",
+    "image": ""
+  },
+  {
+    "id": "3",
+    "outlet": "InfoMoney",
+    "title": "O mercado imobiliário corporativo está se tornando mais feminino?",
+    "date": "2024-01-22",
+    "url": "#",
+    "type": "blog",
+    "outletLogo": "",
+    "image": ""
+  },
+  {
+    "id": "4",
+    "outlet": "CNN Brasil Business",
+    "title": "Segmento de Facilities celebra crescimento da liderança feminina",
+    "date": "2023-11-30",
+    "url": "#",
+    "type": "tv",
+    "outletLogo": "",
+    "image": ""
+  },
+  {
+    "id": "5",
+    "outlet": "Revista Buildings",
+    "title": "Mulheres FM & CRE: O grupo que está mudando o jogo em São Paulo",
+    "date": "2023-10-05",
+    "url": "#",
+    "type": "magazine",
+    "outletLogo": "",
+    "image": ""
+  },
+  {
+    "id": "6",
+    "outlet": "Podcast Gestão Imobiliária",
+    "title": "Ep. 112 — Empoderamento e Negócios: A força do coletivo feminino em CRE",
+    "date": "2023-08-18",
+    "url": "#",
+    "type": "podcast",
+    "outletLogo": "",
+    "image": ""
+  }
+]

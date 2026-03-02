@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "title": "Café com Propósito: Liderança Feminina",
+    "date": "2024-09-20",
+    "location": "Casa do Saber SP",
+    "city": "São Paulo",
+    "description": "Encontro para discutir os desafios e conquistas da liderança feminina no setor de Facilities Management.",
+    "images": [],
+    "year": 2024
+  },
+  {
+    "id": "2",
+    "title": "Summit FM & CRE 2024",
+    "date": "2024-06-15",
+    "location": "Centro de Convenções Frei Caneca",
+    "city": "São Paulo",
+    "description": "O maior encontro anual do grupo, reunindo mais de 150 profissionais para debates, workshops e networking.",
+    "images": [],
+    "year": 2024
+  },
+  {
+    "id": "3",
+    "title": "Café com Propósito: Recolocação Profissional",
+    "date": "2024-03-08",
+    "location": "Impact Hub SP",
+    "city": "São Paulo",
+    "description": "Em comemoração ao Dia Internacional da Mulher, o evento focou em recolocação profissional e capacitação para mulheres em transição de carreira.",
+    "images": [],
+    "year": 2024
+  },
+  {
+    "id": "4",
+    "title": "Workshop: ESG na Prática",
+    "date": "2023-11-22",
+    "location": "CBRE Brasil",
+    "city": "São Paulo",
+    "description": "Imersão prática sobre como implementar práticas ESG em projetos de Facilities e Corporate Real Estate.",
+    "images": [],
+    "year": 2023
+  },
+  {
+    "id": "5",
+    "title": "Summit FM & CRE 2023",
+    "date": "2023-07-14",
+    "location": "Espaço Cubo Itaú",
+    "city": "São Paulo",
+    "description": "Segunda edição do encontro anual, com painéis sobre o futuro do trabalho, smart buildings e diversidade no setor.",
+    "images": [],
+    "year": 2023
+  },
+  {
+    "id": "6",
+    "title": "Encontro de Fundação",
+    "date": "2022-10-05",
+    "location": "Espaço Colaborativo Pinheiros",
+    "city": "São Paulo",
+    "description": "O primeiro encontro oficial do grupo, marcando o início de uma comunidade dedicada ao avanço profissional feminino em FM e CRE.",
+    "images": [],
+    "year": 2022
+  }
+]

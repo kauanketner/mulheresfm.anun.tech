@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "title": "Novo evento",
+    "date": "2025-04-17",
+    "time": "19:00",
+    "location": "Espaço Colaborativo Pinheiros",
+    "address": "Rua dos Pinheiros, 870 — Pinheiros, São Paulo",
+    "description": "Nosso encontro mensal com tema central: Inovação em Facilities Management. Traga sua perspectiva e venha trocar experiências com outras profissionais do setor.",
+    "registrationUrl": "#",
+    "status": "upcoming"
+  },
+  {
+    "id": "5",
+    "title": "Mulheres que inspiram e histórias que transformam",
+    "date": "2025-01-23",
+    "time": "19:00",
+    "location": "Espaço L'atelier",
+    "address": "Av. das Nações Unidas, 12559, Brooklin Novo, São Paulo",
+    "description": "O Grupo de Mulheres em Faciities e CRE juntamente com a Athie Wohnrath tem o orgulho de convidar você para um encontro inesquecível que celebra a força e a trajetória das mulheres que estão revolucionando o universo de Facilities e Corporate Real Estate.",
+    "registrationUrl": "#",
+    "status": "past"
+  }
+]

@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #D3B257;
+  --gold-light: #E8CF7A;
+  --gold-dark: #B8982A;
+  --cream: #F8F4ED;
+  --cream-light: #FAF7F2;
+  --charcoal: #1C1A18;
+  --muted: #5A5248;
+  --border: #E5DDD0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--charcoal);
+  background: var(--cream-light);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gold shimmer text */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #B8982A 0%,
+    #D3B257 25%,
+    #E8CF7A 50%,
+    #D3B257 75%,
+    #B8982A 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Art deco pattern overlay */
+.deco-pattern {
+  background-image:
+    linear-gradient(rgba(211,178,87,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(211,178,87,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Geometric corner ornament */
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--gold);
+  border-style: solid;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold divider line */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Button styles */
+.btn-gold {
+  @apply inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal-900 font-body font-semibold text-sm tracking-widest uppercase transition-all duration-300;
+  letter-spacing: 0.15em;
+}
+
+.btn-gold:hover {
+  @apply bg-gold-dark text-white;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(211,178,87,0.3);
+}
+
+.btn-outline-gold {
+  @apply inline-flex items-center gap-2 px-8 py-4 border border-gold text-gold font-body font-semibold text-sm tracking-widest uppercase transition-all duration-300;
+  letter-spacing: 0.15em;
+}
+
+.btn-outline-gold:hover {
+  @apply bg-gold text-charcoal-900;
+  transform: translateY(-1px);
+}
+
+/* Section heading style */
+.section-label {
+  @apply font-body text-gold text-xs tracking-[0.3em] uppercase font-semibold;
+}
+
+.section-title {
+  @apply font-display text-charcoal-900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+/* Card hover */
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(28,26,24,0.08);
+}
+
+/* Admin styles */
+.admin-input {
+  @apply w-full px-4 py-3 border border-border bg-white text-charcoal-900 font-body text-sm focus:outline-none focus:border-gold transition-colors;
+}
+
+.admin-label {
+  @apply block text-xs font-semibold tracking-wider uppercase text-muted mb-2 font-body;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 0;
+}
+
+/* Selection */
+::selection {
+  background: rgba(211,178,87,0.25);
+  color: var(--charcoal);
+}

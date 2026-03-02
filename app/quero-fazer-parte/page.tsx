@@ -66,7 +66,6 @@ const steps = [
   },
 ];
 
-const states = ["SP", "RJ", "MG", "RS", "PR", "SC", "BA", "PE", "CE", "DF", "GO", "MT", "MS", "ES", "AM", "PA", "Outro"];
 
 export default function QueroFazerPartePage() {
   const [step, setStep] = useState(0);

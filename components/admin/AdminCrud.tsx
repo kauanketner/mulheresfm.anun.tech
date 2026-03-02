@@ -19,7 +19,7 @@ interface AdminCrudProps<T extends { id: string }> {
   emptyMessage?: string;
 }
 
-export default function AdminCrud<T extends { id: string; [key: string]: unknown }>({
+export default function AdminCrud<T extends { id: string }>({
   title,
   items: initialItems,
   columns,
@@ -266,7 +266,7 @@ export default function AdminCrud<T extends { id: string; [key: string]: unknown
                     </div>
                   ) : field.type === "image" ? (
                     <div className="space-y-2">
-                      {formData[field.key] && (
+                      {!!formData[field.key] && (
                         <div className="relative inline-block">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img

@@ -17,7 +17,7 @@ export default function BlogPage() {
     .filter((p) => p.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const categories = [...new Set(posts.map((p) => p.category))];
+  const categories = Array.from(new Set(posts.map((p) => p.category)));
 
   return (
     <>

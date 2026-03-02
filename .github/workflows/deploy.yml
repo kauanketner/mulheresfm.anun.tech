@@ -15,4 +15,4 @@ jobs:
           username: root
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            sitectl deploy --domain mulheresfm.aun.tech --ref ${{ github.sha }}
+            sitectl deploy --domain mulheresfm.anun.tech --ref ${{ github.sha }}

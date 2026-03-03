@@ -30,6 +30,8 @@ export default function AdminAgendaPage() {
           options: ["upcoming", "past"],
           required: true,
         },
+        { key: "banner", label: "Banner do Evento", type: "image" },
+        { key: "mercadoPagoId", label: "Mercado Pago Preference ID", type: "text" },
       ]}
       apiEndpoint="/api/agenda"
       emptyMessage="Nenhum evento na agenda."

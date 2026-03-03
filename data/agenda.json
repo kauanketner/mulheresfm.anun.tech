@@ -8,7 +8,9 @@
     "address": "Rua dos Pinheiros, 870 — Pinheiros, São Paulo",
     "description": "Nosso encontro mensal com tema central: Inovação em Facilities Management. Traga sua perspectiva e venha trocar experiências com outras profissionais do setor.",
     "registrationUrl": "#",
-    "status": "upcoming"
+    "status": "upcoming",
+    "banner": "",
+    "mercadoPagoId": ""
   },
   {
     "id": "5",
@@ -19,6 +21,8 @@
     "address": "Av. das Nações Unidas, 12559, Brooklin Novo, São Paulo",
     "description": "O Grupo de Mulheres em Faciities e CRE juntamente com a Athie Wohnrath tem o orgulho de convidar você para um encontro inesquecível que celebra a força e a trajetória das mulheres que estão revolucionando o universo de Facilities e Corporate Real Estate.",
     "registrationUrl": "#",
-    "status": "past"
+    "status": "past",
+    "banner": "",
+    "mercadoPagoId": ""
   }
 ]

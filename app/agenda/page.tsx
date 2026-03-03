@@ -69,9 +69,11 @@ export default function AgendaPage() {
 
                     {/* Content */}
                     <div className="space-y-2">
-                      <h2 className="font-display text-xl text-charcoal-900 group-hover:text-gold transition-colors">
-                        {item.title}
-                      </h2>
+                      <Link href={`/agenda/${item.id}`}>
+                        <h2 className="font-display text-xl text-charcoal-900 group-hover:text-gold transition-colors">
+                          {item.title}
+                        </h2>
+                      </Link>
                       <div className="flex flex-wrap gap-x-6 gap-y-1">
                         <span className="font-body text-xs text-muted flex items-center gap-1.5">
                           <span className="text-gold text-xs">◆</span>
@@ -90,20 +92,12 @@ export default function AgendaPage() {
 
                     {/* CTA */}
                     <div className="shrink-0">
-                      {item.registrationUrl && item.registrationUrl !== "#" ? (
-                        <a
-                          href={item.registrationUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-gold text-xs whitespace-nowrap"
-                        >
-                          Inscreva-se
-                        </a>
-                      ) : (
-                        <span className="font-body text-xs text-muted bg-cream-300 px-4 py-2 inline-block">
-                          Em breve
-                        </span>
-                      )}
+                      <Link
+                        href={`/agenda/${item.id}`}
+                        className="btn-gold text-xs whitespace-nowrap"
+                      >
+                        Ver detalhes
+                      </Link>
                     </div>
                   </article>
                 );

@@ -37,6 +37,8 @@ export interface AgendaItem {
   description: string;
   registrationUrl: string;
   status: "upcoming" | "past";
+  banner: string;
+  mercadoPagoId: string;
 }
 
 export interface BlogPost {

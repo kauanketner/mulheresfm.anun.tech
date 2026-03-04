@@ -12,6 +12,8 @@ const navItems = [
   { href: "/admin/blog", label: "Blog", icon: "◈" },
   { href: "/admin/patrocinadores", label: "Patrocinadores", icon: "◆" },
   { href: "/admin/midia", label: "Mídia", icon: "◉" },
+  { href: "/admin/biblioteca", label: "Biblioteca", icon: "◧" },
+  { href: "/admin/configuracoes", label: "Configurações", icon: "◎" },
 ];
 
 export default function AdminSidebar() {

@@ -1,15 +1,15 @@
 [
   {
     "id": "1",
-    "title": "Novo evento",
-    "date": "2025-04-17",
+    "title": "Dia internacional da mulher",
+    "date": "2026-03-19",
     "time": "19:00",
-    "location": "Espaço Colaborativo Pinheiros",
-    "address": "Rua dos Pinheiros, 870 — Pinheiros, São Paulo",
-    "description": "Nosso encontro mensal com tema central: Inovação em Facilities Management. Traga sua perspectiva e venha trocar experiências com outras profissionais do setor.",
+    "location": "Restaurante Lilló",
+    "address": "R. Borges Lagoa, 1321 - Vila Clementino, São Paulo - SP, 04038-034",
+    "description": "Onde a liderança feminina se encontra.\n\nNo dia 19 de março, o Grupo Mulheres em Facilities & CRE promoverá um encontro exclusivo para celebrar o Dia Internacional da Mulher. Mais do que um jantar, este será um momento estratégico de networking qualificado para 40 mulheres líderes que transformam o nosso ecossistema.\n\nEm um ambiente premium, vamos trocar experiências reais e fortalecer as conexões que impulsionam o mercado de FM e Corporate Real Estate.",
     "registrationUrl": "#",
     "status": "upcoming",
-    "banner": "",
+    "banner": "/uploads/1772583781174-cyf3qzodnu.png",
     "mercadoPagoId": ""
   },
   {

@@ -1,6 +1,8 @@
 import { db } from "@/lib/data";
 import AdminCrud from "@/components/admin/AdminCrud";
 
+export const dynamic = "force-dynamic";
+
 export default function AdminPatrocinadoresPage() {
   const items = db.sponsors.getAll();
 

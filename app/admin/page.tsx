@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { db } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
+
 export default function AdminDashboard() {
   const events = db.events.getAll();
   const agenda = db.agenda.getAll();

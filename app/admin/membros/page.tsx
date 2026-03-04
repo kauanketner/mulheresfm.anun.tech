@@ -1,5 +1,7 @@
 import { db } from "@/lib/data";
 
+export const dynamic = "force-dynamic";
+
 export default function AdminMembrosPage() {
   const members = db.members
     .getAll()

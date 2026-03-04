@@ -51,7 +51,7 @@ export default function Navbar() {
           >
             {!logoError ? (
               <Image
-                src="/logo.png"
+                src="/uploads/logo.png"
                 alt="Mulheres FM & CRE"
                 width={140}
                 height={48}

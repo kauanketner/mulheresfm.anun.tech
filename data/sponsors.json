@@ -2,21 +2,21 @@
   {
     "id": "1",
     "name": "Athie Wohnrath",
-    "logo": "",
+    "logo": "/api/uploads/1772592062179-31uc0mx54uc.png",
     "url": "https://www.athiewohnrath.com.br",
     "tier": "gold"
   },
   {
     "id": "2",
     "name": "Cotia Paper",
-    "logo": "",
+    "logo": "/api/uploads/1772592074824-zgvhh8xv56n.jpg",
     "url": "#",
     "tier": "gold"
   },
   {
     "id": "3",
     "name": "Onfly",
-    "logo": "",
+    "logo": "/api/uploads/1772592081741-4wvzu8vyiy.png",
     "url": "https://www.onfly.com.br",
     "tier": "gold"
   }

@@ -53,52 +53,64 @@ export default function AgendaPage() {
               Nenhum evento programado no momento. Acompanhe nossas redes sociais.
             </p>
           ) : (
-            <div className="space-y-px bg-border">
+            <div className="space-y-4">
               {upcoming.map((item) => {
                 const d = formatDateShort(item.date);
                 return (
-                  <article key={item.id} className="bg-cream-100 p-8 grid sm:grid-cols-[80px_1fr_auto] gap-6 items-start group hover:bg-cream-200 transition-colors">
-                    {/* Date block */}
-                    <div className="text-center border border-gold p-3">
-                      <p className="font-body text-xs text-gold font-semibold tracking-wider">
-                        {d.month}
-                      </p>
-                      <p className="font-display text-3xl text-charcoal-900 font-semibold leading-none">
-                        {d.day}
-                      </p>
-                      <p className="font-body text-xs text-muted">{d.year}</p>
-                    </div>
+                  <article key={item.id} className="bg-cream-100 border border-border hover:border-gold transition-all duration-300 group">
+                    <div className="p-6 sm:p-8 grid sm:grid-cols-[88px_1fr] gap-6 items-start">
+                      {/* Date block */}
+                      <div className="text-center border border-gold p-3 w-[88px] shrink-0">
+                        <p className="font-body text-xs text-gold font-semibold tracking-wider">
+                          {d.month}
+                        </p>
+                        <p className="font-display text-3xl text-charcoal-900 font-semibold leading-none">
+                          {d.day}
+                        </p>
+                        <p className="font-body text-xs text-muted">{d.year}</p>
+                      </div>
 
-                    {/* Content */}
-                    <div className="space-y-2">
-                      <Link href={`/agenda/${item.id}`}>
-                        <h2 className="font-display text-xl text-charcoal-900 group-hover:text-gold transition-colors">
+                      {/* Content */}
+                      <div className="space-y-3 min-w-0">
+                        <h2 className="font-display text-2xl text-charcoal-900 group-hover:text-gold transition-colors leading-tight">
                           {item.title}
                         </h2>
-                      </Link>
-                      <div className="flex flex-wrap gap-x-6 gap-y-1">
-                        <span className="font-body text-xs text-muted flex items-center gap-1.5">
-                          <span className="text-gold text-xs">◆</span>
-                          {item.time} · {formatDate(item.date).split(",")[0]}
-                        </span>
-                        <span className="font-body text-xs text-muted flex items-center gap-1.5">
-                          <span className="text-gold text-xs">◆</span>
-                          {item.location}
-                        </span>
+                        <div className="flex flex-wrap gap-x-5 gap-y-1">
+                          <span className="font-body text-xs text-muted flex items-center gap-1.5">
+                            <span className="text-gold">◆</span>
+                            {formatDate(item.date)}
+                          </span>
+                          <span className="font-body text-xs text-muted flex items-center gap-1.5">
+                            <span className="text-gold">◆</span>
+                            {item.time}
+                          </span>
+                          <span className="font-body text-xs text-muted flex items-center gap-1.5">
+                            <span className="text-gold">◆</span>
+                            {item.location}
+                          </span>
+                        </div>
+                        {item.description && (
+                          <p className="font-body text-sm text-muted leading-relaxed line-clamp-2">
+                            {item.description}
+                          </p>
+                        )}
+                        {item.address && (
+                          <p className="font-body text-xs text-charcoal-400">{item.address}</p>
+                        )}
                       </div>
-                      <p className="font-body text-sm text-muted leading-relaxed max-w-xl">
-                        {item.description}
-                      </p>
-                      <p className="font-body text-xs text-charcoal-400">{item.address}</p>
                     </div>
 
-                    {/* CTA */}
-                    <div className="shrink-0">
+                    {/* Footer CTA */}
+                    <div className="border-t border-border px-6 sm:px-8 py-4 flex items-center justify-between bg-cream-200 group-hover:bg-cream-300 transition-colors">
+                      <span className="font-body text-xs text-muted tracking-wider uppercase">Próximo evento</span>
                       <Link
                         href={`/agenda/${item.id}`}
-                        className="btn-gold text-xs whitespace-nowrap"
+                        className="inline-flex items-center gap-2 font-body text-xs font-semibold tracking-widest uppercase text-gold hover:text-gold-dark transition-colors"
                       >
-                        Ver detalhes
+                        Ver detalhes e inscrever-se
+                        <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
+                          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                        </svg>
                       </Link>
                     </div>
                   </article>

@@ -36,7 +36,7 @@ export async function GET() {
           const info = await stat(filePath);
           return {
             filename,
-            url: `/uploads/${filename}`,
+            url: `/api/uploads/${filename}`,
             size: info.size,
             createdAt: info.birthtime.toISOString(),
           };

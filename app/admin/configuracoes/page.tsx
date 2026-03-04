@@ -42,7 +42,7 @@ export default function AdminConfiguracoesPage() {
         <h2 className="font-display text-xl text-charcoal-900 mb-1">Logo do Site</h2>
         <p className="font-body text-xs text-muted mb-6 leading-relaxed">
           Envie uma imagem PNG ou SVG para substituir o logo exibido no cabeçalho do site.
-          O logo será servido em <code className="bg-gray-100 px-1 font-mono">/uploads/logo.png</code>.
+          O logo será servido em <code className="bg-gray-100 px-1 font-mono">/api/uploads/logo.png</code>.
         </p>
 
         {/* Current logo preview */}
@@ -51,7 +51,7 @@ export default function AdminConfiguracoesPage() {
           <div className="border border-gray-200 bg-gray-50 p-4 flex items-center justify-center h-24">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={logoUrl ?? `/uploads/logo.png?t=${Date.now()}`}
+              src={logoUrl ?? "/api/uploads/logo.png"}
               alt="Logo atual"
               className="max-h-16 w-auto object-contain"
               onError={(e) => {

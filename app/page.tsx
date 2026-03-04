@@ -74,64 +74,46 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative h-screen overflow-hidden bg-cream-200">
-        {/* Rolling marquee background */}
-        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          {["MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
-            "NETWORKING · EMPODERAMENTO · LIDERANÇA · INOVAÇÃO · ",
-            "MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
-            "SÃO PAULO · BRASIL · MULHERES · FM & CRE · AGENDA · ",
-            "MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
-            "NETWORKING · EMPODERAMENTO · LIDERANÇA · INOVAÇÃO · ",
-          ].map((text, i) => (
-            <div
-              key={i}
-              className={`marquee-track ${i % 2 === 0 ? "fwd" : "rev"}`}
-              style={{ top: `${i * 17}%` }}
-            >
-              <span>{text.repeat(6)}</span>
-            </div>
-          ))}
-          {/* Gradient escurecendo embaixo */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cream-200 to-transparent" />
-        </div>
+      <section className="relative h-screen overflow-hidden">
+        {/* Dark left background */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[52%] bg-charcoal-900" aria-hidden="true" />
+        {/* Deco pattern on dark side */}
+        <div className="absolute inset-y-0 left-0 w-full lg:w-[52%] deco-pattern opacity-20 pointer-events-none" aria-hidden="true" />
+        {/* Cream right background */}
+        <div className="absolute inset-y-0 right-0 w-0 lg:w-[48%] bg-cream-200" aria-hidden="true" />
+        {/* Gold separator */}
+        <div className="hidden lg:block absolute inset-y-0 left-[52%] w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent z-20" aria-hidden="true" />
 
-        {/* Deco grid */}
-        <div className="absolute inset-0 deco-pattern pointer-events-none opacity-50" aria-hidden="true" />
+        {/* GRID */}
+        <div className="relative z-10 h-full grid lg:grid-cols-[52%_48%]">
 
-        {/* Conteúdo principal */}
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 h-full">
+          {/* LEFT: editorial text */}
+          <div className="flex flex-col justify-between px-8 lg:px-14 xl:px-20 pt-28 pb-10">
 
-            {/* Esquerda: foto das 3 mulheres — ancorada ao rodapé da seção */}
-            <div className="hidden lg:flex items-end justify-start">
-              <HeroImage />
-            </div>
-
-            {/* Direita: texto + evento — centralizado verticalmente */}
-            <div className="flex flex-col justify-center pt-24 pb-12 space-y-8">
-              <div className="space-y-3">
-                <p className="section-label">◆ São Paulo, Brasil</p>
-                <h1
-                  className="font-display text-charcoal-900 leading-[1.05]"
-                  style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.5rem)" }}
-                >
-                  O ecossistema
-                  <em className="block not-italic gold-shimmer">feminino</em>
-                  que transforma{" "}
-                  <span className="text-charcoal-500">o mercado.</span>
-                </h1>
+            {/* Top block */}
+            <div>
+              <div className="flex items-center gap-3 mb-10 lg:mb-12">
+                <div className="h-px w-6 bg-gold flex-shrink-0" />
+                <span className="font-body text-[11px] text-gold tracking-[0.3em] uppercase">
+                  Mulheres FM &amp; CRE · São Paulo
+                </span>
               </div>
 
-              <p className="font-body text-muted leading-relaxed text-base max-w-md">
-                Nosso grupo desenvolve parcerias duradouras, promove bons
-                negócios e relacionamentos reais, baseado em{" "}
-                <strong className="text-charcoal-900 font-semibold">apoio</strong>{" "}
-                e{" "}
-                <strong className="text-charcoal-900 font-semibold">trocas contínuas</strong>.
+              <h1 className="font-display leading-[0.92]" style={{ fontSize: "clamp(3rem, 5.2vw, 5.5rem)" }}>
+                <span className="block text-cream-100">O ecossistema</span>
+                <span className="block gold-shimmer">feminino</span>
+                <span className="block text-cream-100">que transforma</span>
+                <span className="block text-charcoal-500">o mercado.</span>
+              </h1>
+
+              <div className="gold-line w-20 my-7 lg:my-9" />
+
+              <p className="font-body text-charcoal-400 text-sm leading-relaxed max-w-xs lg:max-w-sm">
+                Líderes em Facilities Management e Corporate Real Estate.
+                Parcerias reais, negócios estratégicos, impacto transformador.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Link href="/quero-fazer-parte" className="btn-gold">
                   Quero Fazer Parte
                   <svg width="14" height="14" fill="none" viewBox="0 0 14 14">
@@ -142,31 +124,49 @@ export default function Home() {
                   Ver Agenda
                 </Link>
               </div>
+            </div>
 
-              {/* Próximo evento */}
+            {/* Bottom: stats + next event */}
+            <div className="space-y-5">
+              <div className="grid grid-cols-3 gap-4 pt-5 border-t border-charcoal-700">
+                {[
+                  { value: "200+", label: "Profissionais" },
+                  { value: "30+", label: "Encontros" },
+                  { value: "3+", label: "Anos" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <p className="font-display text-2xl lg:text-3xl text-gold">{s.value}</p>
+                    <p className="font-body text-[10px] text-charcoal-500 uppercase tracking-widest mt-1">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+
               {nextEvent && (
-                <div className="bg-charcoal-900 text-cream-100 p-6 relative border-l-2 border-gold">
-                  <p className="section-label text-gold mb-3">◆ Próximo Evento</p>
-                  <h2 className="font-display text-xl text-cream-100 leading-snug mb-2">
-                    {nextEvent.title}
-                  </h2>
-                  <p className="font-body text-xs text-charcoal-400 mb-4">
-                    {new Date(nextEvent.date + "T12:00:00").toLocaleDateString("pt-BR", {
-                      day: "numeric", month: "long", year: "numeric",
-                    })}{" · "}{nextEvent.time} · {nextEvent.location}
-                  </p>
-                  <Link
-                    href="/agenda"
-                    className="font-body text-xs tracking-[0.15em] uppercase text-gold font-semibold hover:text-gold-light transition-colors flex items-center gap-2 w-fit"
-                  >
-                    Ver agenda completa
-                    <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
-                      <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <div className="pt-5 border-t border-charcoal-700">
+                  <p className="font-body text-[10px] text-gold tracking-[0.25em] uppercase mb-2">◆ Próximo Evento</p>
+                  <Link href={`/agenda/${nextEvent.id}`} className="group flex items-start justify-between gap-4">
+                    <div>
+                      <p className="font-display text-cream-100 text-lg leading-snug group-hover:text-gold transition-colors">
+                        {nextEvent.title}
+                      </p>
+                      <p className="font-body text-xs text-charcoal-400 mt-0.5">
+                        {new Date(nextEvent.date + "T12:00:00").toLocaleDateString("pt-BR", {
+                          day: "numeric", month: "long", year: "numeric",
+                        })} · {nextEvent.time} · {nextEvent.location}
+                      </p>
+                    </div>
+                    <svg className="shrink-0 text-gold mt-1" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                     </svg>
                   </Link>
                 </div>
               )}
             </div>
+          </div>
+
+          {/* RIGHT: photo anchored at bottom */}
+          <div className="hidden lg:flex items-end justify-start bg-cream-200 overflow-hidden">
+            <HeroImage />
           </div>
         </div>
       </section>

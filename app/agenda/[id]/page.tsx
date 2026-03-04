@@ -4,13 +4,10 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/data";
 import EventRegistrationForm from "@/components/EventRegistrationForm";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: { id: string };
-}
-
-export async function generateStaticParams() {
-  const items = db.agenda.getAll();
-  return items.map((item) => ({ id: item.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

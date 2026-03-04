@@ -39,36 +39,51 @@ jobs:
           script: |
             set -e
 
-            IMAGE="ghcr.io/${{ github.repository_owner }}/mulheresfm:latest"
-            CONTAINER="mulheresfm"
-            DATA_DIR="/data/mulheresfm"
+            DOMAIN="mulheresfm.anun.tech"
 
-            # Login no registry
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            echo "=== Containers em execução ==="
+            docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}"
 
-            # Garante volume de dados persistente
-            mkdir -p "$DATA_DIR/uploads"
+            echo "=== Tentando sitectl deploy ==="
+            if command -v sitectl &> /dev/null; then
+              sitectl deploy --domain "$DOMAIN"
+              echo "sitectl deploy concluído"
+            else
+              echo "sitectl não encontrado, buscando em paths comuns..."
+              for p in /usr/local/bin/sitectl /usr/bin/sitectl ~/bin/sitectl; do
+                if [ -x "$p" ]; then
+                  "$p" deploy --domain "$DOMAIN"
+                  echo "Deploy via $p concluído"
+                  exit 0
+                fi
+              done
 
-            # Para e remove QUALQUER container usando porta 3000 (independente do nome)
-            docker ps -q --filter "publish=3000" | xargs -r docker stop
-            docker ps -aq --filter "publish=3000" | xargs -r docker rm
+              echo "sitectl não encontrado. Fazendo deploy direto via Docker..."
+              IMAGE="ghcr.io/${{ github.repository_owner }}/mulheresfm:latest"
+              DATA_DIR="/data/mulheresfm"
+              mkdir -p "$DATA_DIR/uploads"
 
-            # Remove container pelo nome também (caso não use porta fixa)
-            docker stop "$CONTAINER" 2>/dev/null || true
-            docker rm   "$CONTAINER" 2>/dev/null || true
+              echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+              docker pull "$IMAGE"
 
-            # Puxa e sobe com nova imagem
-            docker pull "$IMAGE"
-            docker run -d \
-              --name "$CONTAINER" \
-              --restart unless-stopped \
-              -p 3000:3000 \
-              -v "$DATA_DIR:/data" \
-              -e DATA_DIR=/data \
-              -e ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD }}" \
-              -e NODE_ENV=production \
-              "$IMAGE"
+              # Para qualquer container usando porta 3000
+              docker ps -q --filter "publish=3000" | xargs -r docker stop || true
+              docker ps -aq --filter "publish=3000" | xargs -r docker rm || true
+              docker stop mulheresfm 2>/dev/null || true
+              docker rm   mulheresfm 2>/dev/null || true
 
-            # Limpeza
-            docker image prune -f
-            echo "Deploy concluído com sucesso!"
+              docker run -d \
+                --name mulheresfm \
+                --restart unless-stopped \
+                -p 3000:3000 \
+                -v "$DATA_DIR:/data" \
+                -e DATA_DIR=/data \
+                -e ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD }}" \
+                -e NODE_ENV=production \
+                "$IMAGE"
+
+              docker image prune -f
+            fi
+
+            echo "=== Containers após deploy ==="
+            docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Ports}}"

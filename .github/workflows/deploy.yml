@@ -49,7 +49,11 @@ jobs:
             # Garante volume de dados persistente
             mkdir -p "$DATA_DIR/uploads"
 
-            # Para e remove container antigo
+            # Para e remove QUALQUER container usando porta 3000 (independente do nome)
+            docker ps -q --filter "publish=3000" | xargs -r docker stop
+            docker ps -aq --filter "publish=3000" | xargs -r docker rm
+
+            # Remove container pelo nome também (caso não use porta fixa)
             docker stop "$CONTAINER" 2>/dev/null || true
             docker rm   "$CONTAINER" 2>/dev/null || true
 

@@ -87,6 +87,17 @@ export interface Member {
   createdAt: string;
 }
 
+export interface EventRegistration {
+  id: string;
+  eventId: string;
+  eventTitle: string;
+  nome: string;
+  email: string;
+  whatsapp: string;
+  cpf: string;
+  createdAt: string;
+}
+
 // --- CRUD helpers ---
 
 export const db = {
@@ -113,6 +124,10 @@ export const db = {
   members: {
     getAll: () => readJson<Member[]>("members.json"),
     save: (data: Member[]) => writeJson("members.json", data),
+  },
+  eventRegistrations: {
+    getAll: () => readJson<EventRegistration[]>("event-registrations.json"),
+    save: (data: EventRegistration[]) => writeJson("event-registrations.json", data),
   },
 };
 

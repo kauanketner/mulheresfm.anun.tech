@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/data";
-import MercadoPagoButton from "@/components/MercadoPagoButton";
+import EventRegistrationForm from "@/components/EventRegistrationForm";
 
 interface Props {
   params: { id: string };
@@ -143,55 +143,17 @@ export default function EventDetailPage({ params }: Props) {
               )}
             </div>
 
-            {/* Right: ticket CTA */}
-            {(item.mercadoPagoId || (item.registrationUrl && item.registrationUrl !== "#")) && (
-              <div className="lg:sticky lg:top-28">
-                <div className="border border-gold/40 bg-cream-200 p-6">
-                  <p className="section-label mb-3">◆ Ingresso</p>
-                  <h3 className="font-display text-xl text-charcoal-900 mb-1 leading-snug">
-                    Garanta sua vaga
-                  </h3>
-                  <p className="font-body text-xs text-muted mb-6 leading-relaxed">
-                    Inscreva-se agora e faça parte deste encontro exclusivo para profissionais de FM &amp; CRE.
-                  </p>
-
-                  {/* Divider */}
-                  <div className="w-8 h-px bg-gold mb-6" />
-
-                  {/* Event quick info */}
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gold text-xs">◆</span>
-                      <span className="font-body text-xs text-charcoal-700">
-                        {formatDate(item.date)}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gold text-xs">◆</span>
-                      <span className="font-body text-xs text-charcoal-700">{item.time}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-gold text-xs">◆</span>
-                      <span className="font-body text-xs text-charcoal-700">{item.location}</span>
-                    </div>
-                  </div>
-
-                  {/* Mercado Pago button or fallback */}
-                  {item.mercadoPagoId ? (
-                    <MercadoPagoButton preferenceId={item.mercadoPagoId} />
-                  ) : item.registrationUrl && item.registrationUrl !== "#" ? (
-                    <a
-                      href={item.registrationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-gold text-xs w-full text-center block"
-                    >
-                      Inscreva-se
-                    </a>
-                  ) : null}
-                </div>
-              </div>
-            )}
+            {/* Right: registration form */}
+            <div className="lg:sticky lg:top-28">
+              <EventRegistrationForm
+                eventId={item.id}
+                eventTitle={item.title}
+                mercadoPagoId={item.mercadoPagoId || undefined}
+                eventDate={formatDate(item.date)}
+                eventTime={item.time}
+                eventLocation={item.location}
+              />
+            </div>
           </div>
         </div>
       </section>

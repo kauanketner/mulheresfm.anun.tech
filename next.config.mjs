@@ -2,8 +2,16 @@
 const nextConfig = {
   images: {
     domains: [],
-    // Permite imagens servidas do diretório de uploads local
     remotePatterns: [],
+  },
+  async rewrites() {
+    return [
+      {
+        // URLs antigas /uploads/* redirecionam para a rota API /api/uploads/*
+        source: "/uploads/:path*",
+        destination: "/api/uploads/:path*",
+      },
+    ];
   },
 };
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { db } from "@/lib/data";
 import GoldDivider from "@/components/GoldDivider";
+import HeroImage from "@/components/HeroImage";
 
 export default function Home() {
   const agenda = db.agenda.getAll().filter((a) => a.status === "upcoming");
@@ -71,29 +72,47 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream-200 deco-pattern">
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cream-300/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl -translate-x-1/2 translate-y-1/2" />
-          <svg className="absolute top-8 left-8 text-gold opacity-25" width="80" height="80" viewBox="0 0 80 80" fill="none">
-            <path d="M0 80V0h80" stroke="currentColor" strokeWidth="1" />
-            <path d="M12 80V12h68" stroke="currentColor" strokeWidth="0.5" />
-          </svg>
-          <svg className="absolute bottom-8 right-8 text-gold opacity-25 rotate-180" width="80" height="80" viewBox="0 0 80 80" fill="none">
-            <path d="M0 80V0h80" stroke="currentColor" strokeWidth="1" />
-            <path d="M12 80V12h68" stroke="currentColor" strokeWidth="0.5" />
-          </svg>
+      <section className="relative min-h-screen flex items-end overflow-hidden bg-cream-200">
+        {/* Rolling marquee background */}
+        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+          {["MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
+            "NETWORKING · EMPODERAMENTO · LIDERANÇA · INOVAÇÃO · ",
+            "MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
+            "SÃO PAULO · BRASIL · MULHERES · FM & CRE · AGENDA · ",
+            "MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
+            "NETWORKING · EMPODERAMENTO · LIDERANÇA · INOVAÇÃO · ",
+          ].map((text, i) => (
+            <div
+              key={i}
+              className={`marquee-track ${i % 2 === 0 ? "fwd" : "rev"}`}
+              style={{ top: `${i * 17}%` }}
+            >
+              <span>{text.repeat(6)}</span>
+            </div>
+          ))}
+          {/* Gradient escurecendo embaixo */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cream-200 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: text */}
-            <div className="space-y-8">
+        {/* Deco grid */}
+        <div className="absolute inset-0 deco-pattern pointer-events-none opacity-50" aria-hidden="true" />
+
+        {/* Conteúdo principal */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pb-0 pt-28">
+          <div className="grid lg:grid-cols-2 gap-8 items-end">
+
+            {/* Esquerda: foto das 3 mulheres */}
+            <div className="flex items-end justify-center lg:justify-start h-[65vh] lg:h-[75vh]">
+              <HeroImage />
+            </div>
+
+            {/* Direita: texto + evento */}
+            <div className="pb-16 space-y-8">
               <div className="space-y-3">
                 <p className="section-label">◆ São Paulo, Brasil</p>
                 <h1
                   className="font-display text-charcoal-900 leading-[1.05]"
-                  style={{ fontSize: "clamp(3rem, 5vw, 4.5rem)" }}
+                  style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.5rem)" }}
                 >
                   O ecossistema
                   <em className="block not-italic gold-shimmer">feminino</em>
@@ -102,7 +121,7 @@ export default function Home() {
                 </h1>
               </div>
 
-              <p className="font-body text-muted leading-relaxed text-lg max-w-md">
+              <p className="font-body text-muted leading-relaxed text-base max-w-md">
                 Nosso grupo desenvolve parcerias duradouras, promove bons
                 negócios e relacionamentos reais, baseado em{" "}
                 <strong className="text-charcoal-900 font-semibold">apoio</strong>{" "}
@@ -121,35 +140,22 @@ export default function Home() {
                   Ver Agenda
                 </Link>
               </div>
-            </div>
 
-            {/* Right: event + stats */}
-            <div className="space-y-px">
+              {/* Próximo evento */}
               {nextEvent && (
-                <div className="bg-charcoal-900 text-cream-100 p-8 relative">
-                  <div className="absolute top-0 right-0 w-10 h-10 border-t-2 border-r-2 border-gold" />
-                  <div className="absolute bottom-0 left-0 w-10 h-10 border-b-2 border-l-2 border-gold" />
-                  <p className="section-label text-gold mb-4">Próximo Evento</p>
-                  <h2 className="font-display text-2xl text-cream-100 leading-snug mb-3">
+                <div className="bg-charcoal-900 text-cream-100 p-6 relative border-l-2 border-gold">
+                  <p className="section-label text-gold mb-3">◆ Próximo Evento</p>
+                  <h2 className="font-display text-xl text-cream-100 leading-snug mb-2">
                     {nextEvent.title}
                   </h2>
-                  <div className="space-y-1.5 mb-6">
-                    <p className="font-body text-sm text-charcoal-300 flex items-center gap-2">
-                      <span className="text-gold text-xs">◆</span>
-                      {new Date(nextEvent.date + "T12:00:00").toLocaleDateString("pt-BR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}{" · "}{nextEvent.time}
-                    </p>
-                    <p className="font-body text-sm text-charcoal-300 flex items-center gap-2">
-                      <span className="text-gold text-xs">◆</span>
-                      {nextEvent.location}
-                    </p>
-                  </div>
+                  <p className="font-body text-xs text-charcoal-400 mb-4">
+                    {new Date(nextEvent.date + "T12:00:00").toLocaleDateString("pt-BR", {
+                      day: "numeric", month: "long", year: "numeric",
+                    })}{" · "}{nextEvent.time} · {nextEvent.location}
+                  </p>
                   <Link
                     href="/agenda"
-                    className="font-body text-xs tracking-[0.15em] uppercase text-gold font-semibold hover:text-gold-light transition-colors flex items-center gap-2"
+                    className="font-body text-xs tracking-[0.15em] uppercase text-gold font-semibold hover:text-gold-light transition-colors flex items-center gap-2 w-fit"
                   >
                     Ver agenda completa
                     <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
@@ -158,23 +164,22 @@ export default function Home() {
                   </Link>
                 </div>
               )}
-
-              <div className="grid grid-cols-2 gap-px bg-border">
-                {stats.map((s) => (
-                  <div key={s.label} className="bg-cream-100 px-6 py-5 text-center">
-                    <p className="font-display text-3xl font-semibold text-gold">{s.value}</p>
-                    <p className="font-body text-xs text-muted tracking-wider uppercase mt-1">{s.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <span className="font-body text-xs tracking-widest uppercase text-muted">Scroll</span>
-          <div className="w-px h-10 bg-gradient-to-b from-gold to-transparent" />
+      {/* ── STATS ────────────────────────────────────────────────── */}
+      <section className="bg-charcoal-900 border-t border-charcoal-700">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-charcoal-700">
+            {stats.map((s) => (
+              <div key={s.label} className="px-8 py-8 text-center">
+                <p className="font-display text-4xl font-semibold text-gold">{s.value}</p>
+                <p className="font-body text-xs text-charcoal-500 tracking-wider uppercase mt-2">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

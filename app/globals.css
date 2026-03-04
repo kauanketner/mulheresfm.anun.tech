@@ -158,3 +158,30 @@ body {
   background: rgba(211,178,87,0.25);
   color: var(--charcoal);
 }
+
+/* Hero marquee background */
+@keyframes marquee-fwd {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track {
+  position: absolute;
+  white-space: nowrap;
+  display: flex;
+  font-family: var(--font-cormorant, serif);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(211, 178, 87, 0.07);
+  user-select: none;
+  pointer-events: none;
+}
+
+.marquee-track.fwd { animation: marquee-fwd 35s linear infinite; }
+.marquee-track.rev { animation: marquee-rev 28s linear infinite; }

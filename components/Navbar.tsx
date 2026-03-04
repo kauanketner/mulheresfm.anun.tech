@@ -21,6 +21,9 @@ export default function Navbar() {
   const [logoError, setLogoError] = useState(false);
   const pathname = usePathname();
 
+  // Navbar is over the dark hero panel only on home page before scrolling
+  const isDark = pathname === "/" && !scrolled;
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handler, { passive: true });
@@ -55,12 +58,9 @@ export default function Navbar() {
                 alt="Mulheres FM & CRE"
                 width={140}
                 height={48}
-                className={`h-10 w-auto object-contain transition-all duration-300 ${
-                  // white logo: invert to black on light bg, keep white on dark bg
-                  scrolled ? "brightness-0" : "brightness-0"
-                } group-hover:opacity-70`}
+                className="h-10 w-auto object-contain transition-all duration-300 group-hover:opacity-70"
                 style={{
-                  filter: "brightness(0)",
+                  filter: isDark ? "brightness(0) invert(1)" : "brightness(0)",
                 }}
                 onError={() => setLogoError(true)}
                 priority
@@ -68,7 +68,7 @@ export default function Navbar() {
             ) : (
               /* Text fallback if logo file not found */
               <div className="flex flex-col leading-none">
-                <span className="font-display text-lg font-semibold tracking-wide text-charcoal-900 group-hover:text-gold transition-colors duration-300">
+                <span className={`font-display text-lg font-semibold tracking-wide transition-colors duration-300 group-hover:text-gold ${isDark ? "text-cream-100" : "text-charcoal-900"}`}>
                   Mulheres
                 </span>
                 <span className="font-body text-[10px] tracking-[0.25em] uppercase text-gold font-semibold">
@@ -90,7 +90,11 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`font-body text-xs tracking-[0.12em] uppercase font-semibold transition-colors duration-200 relative group ${
-                    active ? "text-gold" : "text-charcoal-700 hover:text-gold"
+                    active
+                      ? "text-gold"
+                      : isDark
+                      ? "text-cream-300 hover:text-gold"
+                      : "text-charcoal-700 hover:text-gold"
                   }`}
                 >
                   {link.label}
@@ -117,9 +121,9 @@ export default function Navbar() {
             className="lg:hidden flex flex-col gap-1.5 p-2"
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           >
-            <span className={`block w-6 h-px bg-charcoal-900 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`} />
-            <span className={`block w-6 h-px bg-charcoal-900 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-px bg-charcoal-900 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${isDark ? "bg-cream-100" : "bg-charcoal-900"} ${menuOpen ? "rotate-45 translate-y-2.5" : ""}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${isDark ? "bg-cream-100" : "bg-charcoal-900"} ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-px transition-all duration-300 ${isDark ? "bg-cream-100" : "bg-charcoal-900"} ${menuOpen ? "-rotate-45 -translate-y-2.5" : ""}`} />
           </button>
         </div>
       </div>

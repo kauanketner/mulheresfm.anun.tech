@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-end overflow-hidden bg-cream-200">
+      <section className="relative h-screen overflow-hidden bg-cream-200">
         {/* Rolling marquee background */}
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
           {["MULHERES · FM & CRE · FACILITIES · CORPORATE REAL ESTATE · ",
@@ -100,16 +100,16 @@ export default function Home() {
         <div className="absolute inset-0 deco-pattern pointer-events-none opacity-50" aria-hidden="true" />
 
         {/* Conteúdo principal */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pb-0 pt-28">
-          <div className="grid lg:grid-cols-2 gap-8 items-end">
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 h-full">
 
-            {/* Esquerda: foto das 3 mulheres */}
-            <div className="flex items-end justify-center lg:justify-start h-[65vh] lg:h-[75vh]">
+            {/* Esquerda: foto das 3 mulheres — ancorada ao rodapé da seção */}
+            <div className="hidden lg:flex items-end justify-start">
               <HeroImage />
             </div>
 
-            {/* Direita: texto + evento */}
-            <div className="pb-16 space-y-8">
+            {/* Direita: texto + evento — centralizado verticalmente */}
+            <div className="flex flex-col justify-center pt-24 pb-12 space-y-8">
               <div className="space-y-3">
                 <p className="section-label">◆ São Paulo, Brasil</p>
                 <h1

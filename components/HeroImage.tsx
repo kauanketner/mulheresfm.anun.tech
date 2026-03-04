@@ -12,7 +12,7 @@ export default function HeroImage() {
     <img
       src="/api/uploads/hero-women.png"
       alt="Mulheres FM & CRE"
-      className="h-full max-h-[80vh] w-auto object-contain object-bottom drop-shadow-2xl"
+      className="h-[88vh] w-auto object-contain object-bottom drop-shadow-2xl"
       onError={() => setError(true)}
     />
   );
